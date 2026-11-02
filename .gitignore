@@ -1,0 +1,17 @@
+# .NET build artifacts
+bin/
+obj/
+*.db
+*.db-shm
+*.db-wal
+logs/
+
+# Node.js
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# VS Code & OS
+.DS_Store
+Thumbs.db

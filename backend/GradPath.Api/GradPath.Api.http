@@ -1,0 +1,50 @@
+@GradPath.Api_HostAddress = http://localhost:5000
+
+### 1. Standalone Auth: Register Student
+POST {{GradPath.Api_HostAddress}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "email": "student@gradpath.ai",
+  "password": "GradPath2026!",
+  "fullName": "Alex Mercer"
+}
+
+### 2. Standalone Auth: Login
+POST {{GradPath.Api_HostAddress}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "student@gradpath.ai",
+  "password": "GradPath2026!"
+}
+
+### 3. Standalone Auth: Current User Me
+GET {{GradPath.Api_HostAddress}}/api/v1/auth/me
+
+### 4. Match Engine: Run Scoring Strategy & Eligibility (M2-UC03 & M2-UC04)
+POST {{GradPath.Api_HostAddress}}/api/v1/matches/run
+Content-Type: application/json
+
+{
+  "cgpa": 3.65,
+  "ieltsScore": 7.5,
+  "degree": "Master of Science",
+  "targetCountry": "Germany",
+  "researchInterests": "Computer Vision, Deep Learning, Edge AI, Autonomous Systems",
+  "skills": "Python, PyTorch, C++, ROS, Embedded ML",
+  "requiresFunding": true
+}
+
+### 5. Approve a Ranked Lead (ApprovedLead v1)
+POST {{GradPath.Api_HostAddress}}/api/v1/shortlist/approve
+Content-Type: application/json
+
+{
+  "professorId": "00000000-0000-0000-0000-000000000000",
+  "studentId": "demo-student-id",
+  "studentEmail": "student@gradpath.ai"
+}
+
+### 6. View Approved Leads
+GET {{GradPath.Api_HostAddress}}/api/v1/leads/approved
